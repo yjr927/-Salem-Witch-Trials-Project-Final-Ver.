@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Weight of Testimony | Salem Interactive Narrative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Merriweather:wght@400;700&family=UnifrakturCook:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="bg-layer"></div>
+    <main class="game-shell">
+      <header class="game-header">
+        <p class="kicker">Interactive Narrative · Salem Witch Trials</p>
+        <h1>The Weight of Testimony</h1>
+        <p class="title-en">A courtroom story about fear, power, and gender</p>
+        <p class="subtitle">Step into Salem, hear the testimonies, and choose what you believe.</p>
+      </header>
+
+      <section id="start-screen" class="panel">
+        <h2>Choose Your Role</h2>
+        <p>You will experience the trial from one role. Each role sees different evidence and has different power.</p>
+        <div class="gallery-strip">
+          <img src="./scene-1.jpeg" alt="Salem trial scene one" />
+          <img src="./scene-2.jpeg" alt="Salem trial scene two" />
+          <img src="./scene-3.jpeg" alt="Salem trial scene three" />
+          <img src="./scene-4.jpeg" alt="Salem trial scene four" />
+          <img src="./scene-5.jpeg" alt="Salem trial scene five" />
+        </div>
+        <div class="role-grid">
+          <button class="role-btn" data-role="judge">
+            <strong>Judge</strong>
+            <span>You control procedure, but pressure from church and town is strong.</span>
+          </button>
+          <button class="role-btn" data-role="accused">
+            <strong>Accused Woman</strong>
+            <span>You have little power and must survive shame, fear, and silence.</span>
+          </button>
+          <button class="role-btn" data-role="jury">
+            <strong>Juror</strong>
+            <span>You should be neutral, but group fear pushes every decision.</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="game-screen" class="panel hidden">
+        <div class="hud">
+          <div class="hud-item">
+            <span>Fear</span>
+            <b id="fear-value">0</b>
+          </div>
+          <div class="hud-item">
+            <span>Bias</span>
+            <b id="bias-value">0</b>
+          </div>
+          <div class="hud-item">
+            <span>Power</span>
+            <b id="power-value">0</b>
+          </div>
+        </div>
+
+        <div class="chapter-row">
+          <span id="chapter-tag">Act I</span>
+          <span id="role-tag">Role:</span>
+        </div>
+
+        <div class="game-layout">
+          <section class="scene-panel">
+            <img id="scene-image" src="./scene-1.jpeg" alt="Current chapter artwork" />
+            <p id="scene-caption" class="scene-caption"></p>
+          </section>
+
+          <section>
+            <article id="narrative" class="narrative"></article>
+
+            <section class="evidence-box">
+              <h3>Evidence</h3>
+              <ul id="evidence-list"></ul>
+            </section>
+
+            <section>
+              <h3>Your Choices</h3>
+              <div id="choices" class="choices"></div>
+            </section>
+          </section>
+        </div>
+      </section>
+
+      <section id="end-screen" class="panel hidden">
+        <h2>Verdict Delivered</h2>
+        <img class="end-image" src="./scene-5.jpeg" alt="Final Salem trial artwork" />
+        <p id="final-verdict" class="verdict"></p>
+        <div id="reflection" class="reflection"></div>
+        <button id="restart-btn" class="restart-btn">Play Again</button>
+      </section>
+    </main>
+    <script src="./game.js"></script>
+  </body>
+</html>
