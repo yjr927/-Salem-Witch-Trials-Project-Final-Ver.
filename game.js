@@ -308,23 +308,41 @@ const characterRow = document.getElementById("character-row");
 const speakerName = document.getElementById("speaker-name");
 const dialogueLine = document.getElementById("dialogue-line");
 const nextLineBtn = document.getElementById("next-line-btn");
+const bgmAudio = document.getElementById("bgm-audio");
 
 const timers = {};
+const BGM_TARGET_VOLUME = 0.42;
+const BGM_FADE_MS = 1800;
+const BGM_RESTART_MARGIN = 2.1;
+let bgmStarted = false;
+let bgmRestarting = false;
 
 chooseRoleBtn.addEventListener("click", () => {
+  startBgm();
   introScreen.classList.add("hidden");
   startScreen.classList.remove("hidden");
 });
 
 roleButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
+    startBgm();
     startGame(btn.dataset.role);
   });
 });
 
 restartBtn.addEventListener("click", resetGame);
 nextLineBtn.addEventListener("click", goToNextDialogueLine);
-sceneContinueBtn.addEventListener("click", startDialoguePhase);
+sceneContinueBtn.addEventListener("click", () => {
+  startBgm();
+  startDialoguePhase();
+});
+
+if (bgmAudio) {
+  bgmAudio.loop = false;
+  bgmAudio.volume = 0;
+  bgmAudio.addEventListener("timeupdate", handleBgmTimeUpdate);
+  bgmAudio.addEventListener("ended", restartBgmWithFade);
+}
 
 function currentCase() {
   return CASES[state.role];
@@ -490,6 +508,80 @@ function resetGame() {
   Object.keys(timers).forEach((key) => {
     clearInterval(timers[key]);
     delete timers[key];
+  });
+}
+
+function startBgm() {
+  if (!bgmAudio) {
+    return;
+  }
+
+  if (bgmStarted && !bgmAudio.paused) {
+    return;
+  }
+
+  bgmStarted = true;
+  bgmAudio
+    .play()
+    .then(() => fadeBgmTo(BGM_TARGET_VOLUME, BGM_FADE_MS))
+    .catch(() => {
+      bgmStarted = false;
+    });
+}
+
+function handleBgmTimeUpdate() {
+  if (!bgmAudio || bgmRestarting || !Number.isFinite(bgmAudio.duration)) {
+    return;
+  }
+
+  const timeLeft = bgmAudio.duration - bgmAudio.currentTime;
+  if (timeLeft <= BGM_RESTART_MARGIN && bgmAudio.currentTime > BGM_RESTART_MARGIN) {
+    restartBgmWithFade();
+  }
+}
+
+function restartBgmWithFade() {
+  if (!bgmAudio || bgmRestarting || !bgmStarted) {
+    return;
+  }
+
+  bgmRestarting = true;
+  fadeBgmTo(0, BGM_FADE_MS).then(() => {
+    bgmAudio.currentTime = 0;
+    bgmAudio
+      .play()
+      .then(() => fadeBgmTo(BGM_TARGET_VOLUME, BGM_FADE_MS))
+      .finally(() => {
+        bgmRestarting = false;
+      });
+  });
+}
+
+function fadeBgmTo(targetVolume, duration) {
+  if (!bgmAudio) {
+    return Promise.resolve();
+  }
+
+  if (timers.bgmFade) {
+    clearInterval(timers.bgmFade);
+    delete timers.bgmFade;
+  }
+
+  const startVolume = bgmAudio.volume;
+  const startedAt = performance.now();
+  const target = Math.max(0, Math.min(1, targetVolume));
+
+  return new Promise((resolve) => {
+    timers.bgmFade = setInterval(() => {
+      const progress = Math.min((performance.now() - startedAt) / duration, 1);
+      bgmAudio.volume = startVolume + (target - startVolume) * progress;
+
+      if (progress >= 1) {
+        clearInterval(timers.bgmFade);
+        delete timers.bgmFade;
+        resolve();
+      }
+    }, 40);
   });
 }
 
