@@ -1,463 +1,289 @@
 const ROLES = {
   judge: "Judge",
-  accused: "Accused Woman",
-  jury: "Juror",
+  jury: "Jury",
+  accused: "Witch / Accused Woman",
 };
 
 const CHARACTERS = {
-  magistrate: {
-    name: "Magistrate",
+  judge: {
+    name: "Judge",
     portrait: "./assets/characters/transparent/magistrate-transparent.png",
     close: "./assets/characters/transparent/magistrate-transparent.png",
     focusFit: "contain",
     focusPos: "center bottom",
   },
-  accused: {
-    name: "The Accused",
+  magistrate: {
+    name: "Judge / Magistrate",
+    portrait: "./assets/characters/transparent/magistrate-transparent.png",
+    close: "./assets/characters/transparent/magistrate-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  tituba: {
+    name: "Tituba",
     portrait: "./assets/characters/transparent/accused-transparent.png",
     close: "./assets/characters/transparent/accused-transparent.png",
     focusFit: "contain",
     focusPos: "center bottom",
   },
-  juryA: {
-    name: "Juror A",
+  sarahGood: {
+    name: "Sarah Good",
+    portrait: "./assets/characters/transparent/accused-transparent.png",
+    close: "./assets/characters/transparent/accused-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  rebecca: {
+    name: "Rebecca Nurse",
+    portrait: "./assets/characters/transparent/accused-transparent.png",
+    close: "./assets/characters/transparent/accused-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  abigail: {
+    name: "Abigail Williams",
     portrait: "./assets/characters/transparent/jury-a-transparent.png",
     close: "./assets/characters/transparent/jury-a-transparent.png",
     focusFit: "contain",
     focusPos: "center bottom",
   },
-  juryB: {
-    name: "Juror B",
+  betty: {
+    name: "Betty Parris",
     portrait: "./assets/characters/transparent/jury-b-transparent.png",
     close: "./assets/characters/transparent/jury-b-transparent.png",
     focusFit: "contain",
     focusPos: "center bottom",
   },
-  juryC: {
-    name: "Juror C",
+  ann: {
+    name: "Ann Putnam Jr.",
+    portrait: "./assets/characters/transparent/jury-b-transparent.png",
+    close: "./assets/characters/transparent/jury-b-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  parris: {
+    name: "Reverend Samuel Parris",
+    portrait: "./assets/characters/transparent/magistrate-transparent.png",
+    close: "./assets/characters/transparent/magistrate-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  jury1: {
+    name: "Jury Member 1",
     portrait: "./assets/characters/transparent/jury-c-transparent.png",
     close: "./assets/characters/transparent/jury-c-transparent.png",
     focusFit: "contain",
     focusPos: "center bottom",
   },
-  juryD: {
-    name: "Juror D",
+  jury2: {
+    name: "Jury Member 2",
     portrait: "./assets/characters/transparent/jury-d-transparent.png",
     close: "./assets/characters/transparent/jury-d-transparent.png",
     focusFit: "contain",
     focusPos: "center bottom",
   },
+  villager1: {
+    name: "Villager 1",
+    portrait: "./assets/characters/transparent/jury-c-transparent.png",
+    close: "./assets/characters/transparent/jury-c-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  villager2: {
+    name: "Villager 2",
+    portrait: "./assets/characters/transparent/jury-d-transparent.png",
+    close: "./assets/characters/transparent/jury-d-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  villagers: {
+    name: "Villagers",
+    portrait: "./assets/characters/transparent/jury-a-transparent.png",
+    close: "./assets/characters/transparent/jury-a-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
+  clerk: {
+    name: "Court Clerk",
+    portrait: "./assets/characters/transparent/jury-c-transparent.png",
+    close: "./assets/characters/transparent/jury-c-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
+  },
 };
 
-const CHARACTER_ORDER = ["magistrate", "accused", "juryA", "juryB", "juryC", "juryD"];
-
-const ACTS = [
-  {
-    id: "I",
-    title: "Act I · Accusation",
-    scene: {
-      judge: "./assets/scenes/scene-1-accusation.jpg",
-      accused: "./assets/scenes/scene-1-accusation.jpg",
-      jury: "./assets/scenes/scene-1-accusation.jpg",
-    },
-    caption:
-      "Scene 1 — Accusation: public panic enters the courtroom before any real evidence is tested.",
+const CASES = {
+  judge: {
+    title: "The Examination of Tituba",
+    scene: "./assets/scenes/scene-2-exam-angle-a.jpg",
+    endImage: "./assets/scenes/scene-2-exam-angle-a.jpg",
+    setting:
+      "Nathaniel Ingersoll's tavern, Salem Village, March 1692. The room is crowded. Magistrates, villagers, and accusers watch closely. Candlelight flickers across handwritten court papers.",
+    historicalBackground:
+      "Tituba was an enslaved woman in Reverend Samuel Parris's household. In early 1692, she was one of the first three women accused of witchcraft, along with Sarah Good and Sarah Osborne.\n\nBecause of her enslaved status, gender, race, and lack of social power, Tituba was extremely vulnerable. Under pressure, she confessed to witchcraft and described the Devil, strange animals, and the Devil's book. Her confession helped intensify the panic in Salem.",
+    record: [
+      "Case: Tituba's examination.",
+      "Location: Nathaniel Ingersoll's tavern, Salem Village.",
+      "Date: March 1692.",
+      "Key pressure: enslaved status, gender, race, household authority, and public panic.",
+    ],
     dialogue: [
+      { speaker: "judge", text: "Tituba, you stand accused of practicing witchcraft and tormenting the children of Salem. What do you say?" },
+      { speaker: "tituba", text: "I have done no harm." },
+      { speaker: "abigail", text: "She hurts me! Her spirit comes to me!" },
+      { speaker: "betty", text: "She pinches and chokes me in the night!" },
+      { speaker: "judge", text: "Tituba, these children suffer before us. Did you make a covenant with the Devil?" },
+      { speaker: "tituba", text: "No. I am afraid. I do not know why they say this." },
+      { speaker: "parris", text: "You live in my household. You have seen what has happened to my daughter. Tell the truth before God." },
+      { speaker: "judge", text: "Did the Devil appear to you?" },
+      { speaker: "tituba", text: "A man came to me. He told me to serve him." },
+      { speaker: "villagers", text: "The Devil! She has seen the Devil!" },
+      { speaker: "judge", text: "Did he ask you to sign his book?" },
+      { speaker: "tituba", text: "Yes. He showed me a book. He told me there were other names inside." },
+      { speaker: "judge", text: "Whose names?" },
+      { speaker: "tituba", text: "I saw Sarah Good. I saw Sarah Osborne. There were more, but I could not read them." },
+      { speaker: "abigail", text: "She speaks the truth! There are more witches in Salem!" },
+      { speaker: "judge", text: "Then the danger is greater than we feared." },
+    ],
+    choicePrompt: "As the Judge, how do you respond?",
+    choices: [
       {
-        speaker: "magistrate",
-        text: "Bring the accused forward. This court will hear the charge.",
+        text: "Pressure Tituba for more names.",
+        outcome: "Tituba gives more details under pressure. The courtroom becomes more fearful. The witch hunt expands.",
       },
       {
-        speaker: "accused",
-        text: "I stand here innocent. Fear has named me before truth could speak.",
+        text: "Question whether fear is shaping the testimony.",
+        outcome: "Some villagers become suspicious of your doubt. They whisper that you are protecting witches.",
       },
       {
-        speaker: "juryA",
-        text: "The whole town is watching. If we hesitate, they will call us weak.",
-      },
-      {
-        speaker: "juryD",
-        text: "I hear more panic than proof. Yet no one in this room feels free to say it.",
+        text: "Accept her confession as proof of witchcraft.",
+        outcome: "The confession becomes powerful evidence. The court treats the invisible threat as real.",
       },
     ],
-    narratives: {
-      judge:
-        "Salem, 1692. People outside the court demand punishment now. You sit with the court record, knowing the town wants certainty more than truth.",
-      accused:
-        "You are pushed into the courtroom in rope cuffs. A neighbor says you speak with the devil. You know this claim started after a land dispute.",
-      jury:
-        "You take your seat with the other jurors. A man whispers, 'If she goes free, we are next.' Fear is already shaping the room.",
-    },
-    evidence: {
-      judge: [
-        "A minister's letter says disorder comes from sinful women.",
-        "Two girls claim they saw the accused woman's spirit.",
-        "No physical proof has been shown.",
-      ],
-      accused: [
-        "Your main accuser has a known conflict with your family.",
-        "The spirit sighting happened when you were home with your daughter.",
-        "No one is willing to defend you in open court.",
-      ],
-      jury: [
-        "Young witnesses cry and describe ghostly attacks.",
-        "The town recently suffered illness and infant deaths.",
-        "The land conflict is not read aloud.",
-      ],
-    },
-    choices: {
-      judge: [
-        {
-          text: "Allow spirit testimony to calm the crowd.",
-          effects: { fear: 2, bias: 2, power: 1, awareness: -1 },
-        },
-        {
-          text: "Ask for stronger proof, but keep the case open.",
-          effects: { fear: 1, bias: 1, power: 2, awareness: 1 },
-        },
-        {
-          text: "Quietly remove the land conflict from record.",
-          effects: { fear: 2, bias: 3, power: 2, awareness: -2 },
-        },
-      ],
-      accused: [
-        {
-          text: "Deny the charge and explain the land dispute.",
-          effects: { fear: 2, bias: 1, power: -1, awareness: 2 },
-        },
-        {
-          text: "Beg for mercy and speak softly.",
-          effects: { fear: 1, bias: 2, power: -2, awareness: 0 },
-        },
-        {
-          text: "Stay silent under hostile questioning.",
-          effects: { fear: 2, bias: 2, power: -1, awareness: 1 },
-        },
-      ],
-      jury: [
-        {
-          text: "Follow the crowd and trust the spirit claim.",
-          effects: { fear: 2, bias: 2, power: 0, awareness: -1 },
-        },
-        {
-          text: "Ask for background details, but avoid open conflict.",
-          effects: { fear: 1, bias: 1, power: 1, awareness: 1 },
-        },
-        {
-          text: "Publicly challenge spirit evidence.",
-          effects: { fear: 2, bias: 0, power: -1, awareness: 3 },
-        },
-      ],
-    },
+    historicalOutcome:
+      "Tituba's confession became a turning point in the Salem Witch Trials. Instead of ending the accusations, her confession made the community believe that a larger witch conspiracy existed. Unlike many who denied witchcraft and were executed, Tituba survived the trials.",
+    modernEcho:
+      "This case shows how people with the least power can be pressured into false or exaggerated confessions. In modern society, similar patterns can appear when vulnerable people are interrogated under fear, authority, or social pressure. Tituba's story asks players to question whether confession always means truth, especially when power is unequal.",
   },
-  {
-    id: "II",
-    title: "Act II · Examination",
-    scene: {
-      judge: "./assets/scenes/scene-2-exam-angle-a.jpg",
-      accused: "./assets/scenes/scene-2-exam-angle-b.jpg",
-      jury: "./assets/scenes/scene-2-exam-angle-b.jpg",
-    },
-    caption:
-      "Scene 2 — Examination: a staged interrogation where scrutiny grows louder than reason.",
+  jury: {
+    title: "The Trial of Rebecca Nurse",
+    scene: "./assets/scenes/scene-3-deliberation.jpg",
+    endImage: "./assets/scenes/scene-4-sentence.jpg",
+    setting:
+      "The Salem courtroom, June 1692. The room is tense. Some villagers support Rebecca Nurse. Others fear that even respected people may secretly serve the Devil.",
+    historicalBackground:
+      "Rebecca Nurse was a respected elderly woman in Salem Village. She was known as religious and honorable. Her accusation shocked the community because she did not fit the stereotype of a dangerous outsider.\n\nIn her trial, the jury first returned a verdict of not guilty. However, after public pressure and reactions from the accusers, the jury was told to reconsider. The verdict changed to guilty. Rebecca Nurse was executed on July 19, 1692.",
+    record: [
+      "Case: The trial of Rebecca Nurse.",
+      "Location: Salem courtroom.",
+      "Date: June 1692.",
+      "Key pressure: public fear, afflicted accusers' reactions, and pressure on jury independence.",
+    ],
     dialogue: [
+      { speaker: "judge", text: "Rebecca Nurse, you are accused of practicing witchcraft and tormenting the afflicted girls of Salem. How do you plead?" },
+      { speaker: "rebecca", text: "I am innocent. I have never harmed these children. I am clear before God." },
+      { speaker: "abigail", text: "Her spirit came to me! She tried to make me sign the Devil's book!" },
+      { speaker: "ann", text: "She hurt me. I saw her shape. She is not what she appears to be." },
+      { speaker: "rebecca", text: "I am an old woman. I have lived among you for many years. You know my life. You know my faith." },
+      { speaker: "villager1", text: "Rebecca Nurse is a good woman. I cannot believe this." },
+      { speaker: "villager2", text: "If the Devil can hide anywhere, he can hide behind a holy face." },
+      { speaker: "judge", text: "Jury, you have heard the testimony. Consider the evidence." },
+      { speaker: "jury1", text: "There is no physical proof." },
+      { speaker: "jury2", text: "But the afflicted girls cry out against her." },
+      { speaker: "jury1", text: "Fear is not proof." },
+      { speaker: "jury2", text: "In Salem, fear has become proof." },
+      { speaker: "judge", text: "What is your verdict?" },
+      { speaker: "jury1", text: "Not guilty." },
+      { speaker: "abigail", text: "No! She is hurting us still!" },
+      { speaker: "ann", text: "Her spirit is here! She is attacking us!" },
+      { speaker: "villagers", text: "How can you release a witch? The children suffer! The Devil will punish Salem!" },
+      { speaker: "judge", text: "Jury, reconsider your verdict." },
+      { speaker: "jury1", text: "We already gave our answer." },
+      { speaker: "judge", text: "Then consider again whether her words and silence have deceived you." },
+      { speaker: "rebecca", text: "I have nothing more to say. I am innocent." },
+    ],
+    choicePrompt: "As a jury member, what do you do?",
+    choices: [
       {
-        speaker: "magistrate",
-        text: "Read the prayer. If your voice trembles, this court will notice.",
+        text: "Keep the not guilty verdict.",
+        outcome: "You resist the panic, but the courtroom turns against you. The crowd sees doubt as danger.",
       },
       {
-        speaker: "accused",
-        text: "My pause is fear, not evil. You record my breathing as if it were a crime.",
+        text: "Change the verdict to guilty under pressure.",
+        outcome: "The verdict changes to guilty. Fear overpowers uncertainty.",
       },
       {
-        speaker: "juryB",
-        text: "The witness stories conflict, but the room wants one clean answer.",
-      },
-      {
-        speaker: "juryC",
-        text: "This no longer feels like a search for truth. It feels like a trap already closed.",
+        text: "Ask for more evidence before deciding.",
+        outcome: "The court grows impatient. The accusers' suffering becomes emotional pressure against you.",
       },
     ],
-    narratives: {
-      judge:
-        "The hearing becomes a performance. Each pause from the accused is called suspicious. You see contradictions, but pressure for order keeps rising.",
-      accused:
-        "You are told to recite prayer as proof of innocence. You hesitate for a second, and the clerk writes 'unnatural behavior.' The rules are not made for you.",
-      jury:
-        "Questions sound less like a search for truth and more like a trap. When the accused explains herself, people call it trickery.",
-    },
-    evidence: {
-      judge: [
-        "Court notes say the accused trembled while answering.",
-        "Witness statements conflict on time and place.",
-        "Town leaders warn that acquittal may trigger unrest.",
-      ],
-      accused: [
-        "Your prayer hesitation is framed as demonic resistance.",
-        "An older woman who supports you is blocked from testifying.",
-        "The court records only parts that hurt your case.",
-      ],
-      jury: [
-        "Witness stories conflict, but the court favors certainty.",
-        "A defense witness is turned away at the door.",
-        "Rumors say women with healing skills are suspicious.",
-      ],
-    },
-    choices: {
-      judge: [
-        {
-          text: "Push strict judgment and silence objections.",
-          effects: { fear: 2, bias: 2, power: 2, awareness: -1 },
-        },
-        {
-          text: "Let one defense witness speak.",
-          effects: { fear: 1, bias: 0, power: 1, awareness: 2 },
-        },
-        {
-          text: "Call contradictions the work of the devil.",
-          effects: { fear: 2, bias: 3, power: 1, awareness: -2 },
-        },
-      ],
-      accused: [
-        {
-          text: "Answer each claim, even when interrupted.",
-          effects: { fear: 2, bias: 0, power: -1, awareness: 2 },
-        },
-        {
-          text: "Say you may have been tempted, hoping for mercy.",
-          effects: { fear: 1, bias: 3, power: -2, awareness: -1 },
-        },
-        {
-          text: "Ask the clerk to record your full words.",
-          effects: { fear: 1, bias: 1, power: 0, awareness: 1 },
-        },
-      ],
-      jury: [
-        {
-          text: "Accept 'better safe than sorry' logic.",
-          effects: { fear: 2, bias: 3, power: 0, awareness: -2 },
-        },
-        {
-          text: "Discuss contradictions quietly with others.",
-          effects: { fear: 1, bias: 1, power: 1, awareness: 1 },
-        },
-        {
-          text: "Request inclusion of blocked testimony.",
-          effects: { fear: 2, bias: 0, power: -1, awareness: 2 },
-        },
-      ],
-    },
+    historicalOutcome:
+      "The jury initially found Rebecca Nurse not guilty, but the court told them to reconsider. After pressure from the courtroom and accusers, the jury changed the verdict to guilty. Rebecca Nurse was hanged on July 19, 1692.",
+    modernEcho:
+      "Rebecca Nurse's case shows how public pressure can distort justice. Even when a decision begins with doubt, emotional reactions, fear, and group pressure can force people to conform. This connects to modern situations where social media outrage, public labeling, or moral panic can influence judgment before evidence is fully understood.",
   },
-  {
-    id: "III",
-    title: "Act III · Deliberation",
-    scene: {
-      judge: "./assets/scenes/scene-3-deliberation.jpg",
-      accused: "./assets/scenes/scene-3-deliberation.jpg",
-      jury: "./assets/scenes/scene-3-deliberation.jpg",
-    },
-    caption:
-      "Scene 3 — Deliberation: authority gathers at the table while the accused is left alone in shadow.",
+  accused: {
+    title: "The Case of Sarah Good",
+    scene: "./assets/scenes/scene-1-accusation.jpg",
+    endImage: "./assets/scenes/scene-4-sentence.jpg",
+    setting:
+      "The Salem courtroom, 1692. Sarah Good stands alone. The room is filled with villagers who already distrust her.",
+    historicalBackground:
+      "Sarah Good was one of the first three women accused of witchcraft in Salem. She was poor, homeless, and socially isolated. Many villagers already viewed her as strange, troublesome, or undesirable.\n\nHer poverty and outsider status made her an easy target. She was accused not because of strong evidence, but because people associated her behavior, appearance, and social position with danger.",
+    record: [
+      "Case: The case of Sarah Good.",
+      "Location: Salem courtroom.",
+      "Date: 1692.",
+      "Key pressure: poverty, homelessness, social isolation, reputation, and gender bias.",
+    ],
     dialogue: [
+      { speaker: "magistrate", text: "Sarah Good, you are accused of witchcraft. The afflicted children say your spirit has harmed them. How do you answer?" },
+      { speaker: "sarahGood", text: "I am innocent. I have done no witchcraft." },
+      { speaker: "abigail", text: "She torments me! She comes to me in the night!" },
+      { speaker: "ann", text: "She tried to make me sign the Devil's book!" },
+      { speaker: "sarahGood", text: "They lie. I do not know why they speak against me." },
+      { speaker: "villager1", text: "She came to my door begging for food. When I refused, she muttered under her breath." },
+      { speaker: "villager2", text: "After she cursed me, my animal became sick." },
+      { speaker: "sarahGood", text: "I was hungry. I asked for help. That is not witchcraft." },
+      { speaker: "magistrate", text: "Why do so many speak against you?" },
+      { speaker: "sarahGood", text: "Because I am poor. Because I have no friends here. Because no one will defend me." },
+      { speaker: "clerk", text: "The accused denies all charges." },
+      { speaker: "magistrate", text: "Sarah Good, do you confess?" },
+      { speaker: "sarahGood", text: "No. I will not confess to a lie." },
+      { speaker: "abigail", text: "She is hurting me now!" },
+      { speaker: "villagers", text: "The accusers cry out. The courtroom turns toward Sarah." },
+    ],
+    choicePrompt: "As Sarah Good, how do you respond?",
+    choices: [
       {
-        speaker: "juryA",
-        text: "Town leaders sent word. They demand a fast verdict before sunrise.",
+        text: "Continue denying the accusation.",
+        outcome: "You keep your innocence, but the court treats your denial as defiance.",
       },
       {
-        speaker: "magistrate",
-        text: "Then we move quickly. The town asks for order, and order asks for sacrifice.",
+        text: "Confess falsely to survive.",
+        outcome: "The court listens more closely. Confession may save your life, but it spreads the panic.",
       },
       {
-        speaker: "accused",
-        text: "In the cell, I write the truth. I do not know if this court will let it survive.",
-      },
-      {
-        speaker: "juryD",
-        text: "If fear is enough to convict, then none of us are safe from the next accusation.",
+        text: "Accuse someone else to redirect suspicion.",
+        outcome: "Fear moves from you to another person. The system rewards accusation, not truth.",
       },
     ],
-    narratives: {
-      judge:
-        "Night falls. A message from town leaders says the verdict must come soon. They want closure, not complexity.",
-      accused:
-        "In a cold cell, you write a final statement. You do not know whether anyone will read it without edits.",
-      jury:
-        "In the jury room, doubt grows quiet. The loudest voices repeat that fear itself is proof.",
-    },
-    evidence: {
-      judge: [
-        "Officials demand a quick verdict to calm the town.",
-        "Most jurors now lean toward guilt.",
-        "Lack of physical proof is being ignored.",
-      ],
-      accused: [
-        "Your written statement is edited before review.",
-        "A guard says naming another woman could help you.",
-        "You know that choice would harm someone else.",
-      ],
-      jury: [
-        "Some jurors fear social punishment for dissent.",
-        "The court frames mercy as weakness.",
-        "No new physical evidence appears.",
-      ],
-    },
-    choices: {
-      judge: [
-        {
-          text: "Move quickly toward conviction.",
-          effects: { fear: 2, bias: 2, power: 2, awareness: -1 },
-        },
-        {
-          text: "Delay verdict and ask for review.",
-          effects: { fear: 1, bias: 0, power: 1, awareness: 2 },
-        },
-        {
-          text: "Archive process flaws in a hidden note.",
-          effects: { fear: 1, bias: 1, power: 1, awareness: 2 },
-        },
-      ],
-      accused: [
-        {
-          text: "Refuse to accuse others.",
-          effects: { fear: 2, bias: 0, power: -1, awareness: 3 },
-        },
-        {
-          text: "Name another woman to seek survival.",
-          effects: { fear: 1, bias: 3, power: -1, awareness: -2 },
-        },
-        {
-          text: "Write a letter to your daughter.",
-          effects: { fear: 1, bias: 1, power: 0, awareness: 2 },
-        },
-      ],
-      jury: [
-        {
-          text: "Vote guilty for a sense of safety.",
-          effects: { fear: 2, bias: 2, power: 1, awareness: -1 },
-        },
-        {
-          text: "Raise doubt, but do not insist.",
-          effects: { fear: 1, bias: 1, power: 0, awareness: 1 },
-        },
-        {
-          text: "Hold your dissent and request it on record.",
-          effects: { fear: 2, bias: 0, power: -1, awareness: 3 },
-        },
-      ],
-    },
+    historicalOutcome:
+      "Sarah Good denied the charges against her. She was convicted and executed by hanging on July 19, 1692. Her case shows how poverty, reputation, and gender bias made certain women more vulnerable to accusation.",
+    modernEcho:
+      "Sarah Good's case shows how society often targets people who are poor, isolated, or seen as different. In modern life, people can still be judged through stereotypes instead of evidence. Her story connects to issues like class bias, gender bias, public shaming, and the way communities sometimes blame vulnerable people during moments of fear.",
   },
-  {
-    id: "IV",
-    title: "Act IV · Sentence",
-    scene: {
-      judge: "./assets/scenes/scene-4-sentence.jpg",
-      accused: "./assets/scenes/scene-4-sentence.jpg",
-      jury: "./assets/scenes/scene-4-sentence.jpg",
-    },
-    caption:
-      "Scene 4 — Sentence: formal order is performed, while structural injustice is sealed into record.",
-    dialogue: [
-      {
-        speaker: "magistrate",
-        text: "By authority of this court, the accused is judged guilty.",
-      },
-      {
-        speaker: "accused",
-        text: "You call me witch, and erase every honest part of my life with one word.",
-      },
-      {
-        speaker: "juryB",
-        text: "The room sounds relieved. But relief is not the same as justice.",
-      },
-      {
-        speaker: "juryC",
-        text: "This verdict will be written as order. We know it was fear.",
-      },
-    ],
-    narratives: {
-      judge:
-        "The bell rings. You read the sentence and the crowd exhales with relief. Still, you know the court never resolved its core contradictions.",
-      accused:
-        "You stand to hear the sentence. The word 'witch' erases the life you built: care work, healing, family, prayer.",
-      jury:
-        "The gavel falls. People say order has returned. You feel that fear has simply been placed onto one woman.",
-    },
-    evidence: {
-      judge: [
-        "Official records hide key process problems.",
-        "The public praises a fast and decisive court.",
-        "The victim's voice remains marginal in the archive.",
-      ],
-      accused: [
-        "Your final words are shortened in the record.",
-        "Silence is interpreted as guilt.",
-        "There is no meaningful appeal path.",
-      ],
-      jury: [
-        "The final report describes broad agreement.",
-        "Dissenting voices are minimized as noise.",
-        "Execution is set for dawn.",
-      ],
-    },
-    choices: {
-      judge: [
-        {
-          text: "Read the standard sentence without comment.",
-          effects: { fear: 1, bias: 1, power: 2, awareness: -1 },
-        },
-        {
-          text: "Add a quiet note: evidence is weak.",
-          effects: { fear: 1, bias: 0, power: 1, awareness: 2 },
-        },
-        {
-          text: "Publicly declare the trial fully just.",
-          effects: { fear: 2, bias: 2, power: 2, awareness: -2 },
-        },
-      ],
-      accused: [
-        {
-          text: "Maintain your innocence to the end.",
-          effects: { fear: 1, bias: 0, power: 0, awareness: 2 },
-        },
-        {
-          text: "Ask the crowd for mercy.",
-          effects: { fear: 1, bias: 1, power: -1, awareness: 0 },
-        },
-        {
-          text: "Leave words for future generations.",
-          effects: { fear: 1, bias: 0, power: 0, awareness: 3 },
-        },
-      ],
-      jury: [
-        {
-          text: "Support the sentence and move on.",
-          effects: { fear: 1, bias: 2, power: 1, awareness: -1 },
-        },
-        {
-          text: "Ask that your doubts be documented.",
-          effects: { fear: 1, bias: 0, power: 0, awareness: 2 },
-        },
-        {
-          text: "Tell your family what felt wrong.",
-          effects: { fear: 1, bias: 0, power: 0, awareness: 2 },
-        },
-      ],
-    },
-  },
-];
+};
 
 const state = {
   role: null,
-  step: 0,
-  fear: 0,
-  bias: 0,
-  power: 0,
-  awareness: 0,
-  chosen: [],
   dialogueIndex: 0,
   dialogueDone: false,
+  chosen: null,
 };
 
+const introScreen = document.getElementById("intro-screen");
+const chooseRoleBtn = document.getElementById("choose-role-btn");
 const startScreen = document.getElementById("start-screen");
 const gameScreen = document.getElementById("game-screen");
 const endScreen = document.getElementById("end-screen");
@@ -469,9 +295,6 @@ const evidenceList = document.getElementById("evidence-list");
 const choicesEl = document.getElementById("choices");
 const chapterTag = document.getElementById("chapter-tag");
 const roleTag = document.getElementById("role-tag");
-const fearValue = document.getElementById("fear-value");
-const biasValue = document.getElementById("bias-value");
-const powerValue = document.getElementById("power-value");
 const sceneImage = document.getElementById("scene-image");
 const sceneCaption = document.getElementById("scene-caption");
 const finalVerdict = document.getElementById("final-verdict");
@@ -488,6 +311,11 @@ const nextLineBtn = document.getElementById("next-line-btn");
 
 const timers = {};
 
+chooseRoleBtn.addEventListener("click", () => {
+  introScreen.classList.add("hidden");
+  startScreen.classList.remove("hidden");
+});
+
 roleButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     startGame(btn.dataset.role);
@@ -498,29 +326,27 @@ restartBtn.addEventListener("click", resetGame);
 nextLineBtn.addEventListener("click", goToNextDialogueLine);
 sceneContinueBtn.addEventListener("click", startDialoguePhase);
 
+function currentCase() {
+  return CASES[state.role];
+}
+
 function startGame(role) {
   state.role = role;
-  state.step = 0;
-  state.fear = 0;
-  state.bias = 0;
-  state.power = role === "judge" ? 2 : role === "jury" ? 1 : 0;
-  state.awareness = 0;
-  state.chosen = [];
   state.dialogueIndex = 0;
   state.dialogueDone = false;
+  state.chosen = null;
   startScreen.classList.add("hidden");
   endScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
-  renderCurrentAct();
+  renderCurrentCase();
 }
 
-function renderCurrentAct() {
-  const act = ACTS[state.step];
-  updateHud();
+function renderCurrentCase() {
+  const trialCase = currentCase();
   roleTag.textContent = `Role: ${ROLES[state.role]}`;
-  chapterTag.textContent = act.title;
-  sceneImage.src = act.scene[state.role];
-  sceneCaption.textContent = act.caption;
+  chapterTag.textContent = trialCase.title;
+  sceneImage.src = trialCase.scene;
+  sceneCaption.textContent = trialCase.setting;
 
   actContent.classList.add("hidden");
   choicesEl.innerHTML = "";
@@ -534,15 +360,14 @@ function renderCurrentAct() {
   sceneContinueBtn.disabled = false;
   sceneContinueBtn.textContent = "Enter court dialogue";
 
-  // Phase 1: show scene first, then let dialogue replace it.
   scenePanel.classList.remove("hidden");
   dialogueStage.classList.add("hidden");
 }
 
 function renderDialogueLine(line) {
-  const act = ACTS[state.step];
-  const character = CHARACTERS[line.speaker];
-  dialogueBgImage.src = act.scene[state.role];
+  const trialCase = currentCase();
+  const character = CHARACTERS[line.speaker] || CHARACTERS.villagers;
+  dialogueBgImage.src = trialCase.scene;
   speakerName.textContent = character.name;
   speakerFocusImage.src = character.close;
   speakerFocusImage.dataset.speaker = line.speaker;
@@ -553,21 +378,20 @@ function renderDialogueLine(line) {
   speakerFocusImage.classList.add("zoom-pop");
 
   renderCharacterRow(line.speaker);
-  typeText(dialogueLine, line.text, 14, "dialogue");
+  typeText(dialogueLine, line.text, 12, "dialogue");
 }
 
 function startDialoguePhase() {
-  const act = ACTS[state.step];
+  const trialCase = currentCase();
   scenePanel.classList.add("hidden");
   dialogueStage.classList.remove("hidden");
-  renderDialogueLine(act.dialogue[state.dialogueIndex]);
+  renderDialogueLine(trialCase.dialogue[state.dialogueIndex]);
 }
 
 function renderCharacterRow(activeSpeaker) {
   characterRow.innerHTML = "";
 
-  CHARACTER_ORDER.forEach((id) => {
-    const character = CHARACTERS[id];
+  Object.entries(CHARACTERS).forEach(([id, character]) => {
     const card = document.createElement("div");
     card.className = `character-pill${id === activeSpeaker ? " is-speaking" : ""}`;
 
@@ -587,100 +411,86 @@ function renderCharacterRow(activeSpeaker) {
 }
 
 function goToNextDialogueLine() {
-  const act = ACTS[state.step];
+  const trialCase = currentCase();
   if (state.dialogueDone) {
     return;
   }
 
-  if (state.dialogueIndex < act.dialogue.length - 1) {
+  if (state.dialogueIndex < trialCase.dialogue.length - 1) {
     state.dialogueIndex += 1;
-    renderDialogueLine(act.dialogue[state.dialogueIndex]);
+    renderDialogueLine(trialCase.dialogue[state.dialogueIndex]);
     return;
   }
 
-  finishDialoguePhase(act);
+  finishDialoguePhase(trialCase);
 }
 
-function finishDialoguePhase(act) {
+function finishDialoguePhase(trialCase) {
   state.dialogueDone = true;
   nextLineBtn.disabled = true;
   nextLineBtn.textContent = "Dialogue complete";
   actContent.classList.remove("hidden");
 
-  typeText(narrativeEl, act.narratives[state.role], 14, "narrative");
-  renderEvidenceAndChoices(act);
+  typeText(narrativeEl, trialCase.historicalBackground, 10, "narrative");
+  renderRecordAndChoices(trialCase);
 }
 
-function renderEvidenceAndChoices(act) {
+function renderRecordAndChoices(trialCase) {
   evidenceList.innerHTML = "";
-  act.evidence[state.role].forEach((line) => {
+  trialCase.record.forEach((line) => {
     const li = document.createElement("li");
     li.textContent = line;
     evidenceList.appendChild(li);
   });
 
   choicesEl.innerHTML = "";
-  act.choices[state.role].forEach((choice, idx) => {
+  const prompt = document.createElement("p");
+  prompt.className = "choice-prompt";
+  prompt.textContent = trialCase.choicePrompt;
+  choicesEl.appendChild(prompt);
+
+  trialCase.choices.forEach((choice, idx) => {
     const btn = document.createElement("button");
     btn.className = "choice-btn";
-    btn.textContent = `${idx + 1}. ${choice.text}`;
+    btn.textContent = `${String.fromCharCode(65 + idx)}. ${choice.text}`;
     btn.addEventListener("click", () => applyChoice(choice));
     choicesEl.appendChild(btn);
   });
 }
 
 function applyChoice(choice) {
-  state.fear += choice.effects.fear;
-  state.bias += choice.effects.bias;
-  state.power += choice.effects.power;
-  state.awareness += choice.effects.awareness;
-  state.chosen.push(choice.text);
-  state.step += 1;
-
-  if (state.step >= ACTS.length) {
-    finishGame();
-    return;
-  }
-  renderCurrentAct();
+  state.chosen = choice;
+  finishGame(choice);
 }
 
-function finishGame() {
+function finishGame(choice) {
+  const trialCase = currentCase();
   gameScreen.classList.add("hidden");
   endScreen.classList.remove("hidden");
+  document.querySelector(".end-image").src = trialCase.endImage;
 
-  finalVerdict.textContent =
-    "Autumn, 1692: the court declares the accused woman guilty of witchcraft and sentences her to death. No matter your path, the system still delivers the same fatal ending.";
+  finalVerdict.textContent = `${trialCase.title}\n\nYour choice: ${choice.text}\n\nImmediate outcome: ${choice.outcome}\n\nHistorical outcome: ${trialCase.historicalOutcome}`;
 
-  const roleLine = `You completed the trial as: ${ROLES[state.role]}.\n`;
-  const scoreLine = `Final state: Fear ${state.fear} / Bias ${state.bias} / Power ${state.power}\n`;
-
-  let analysis = "";
-  if (state.awareness >= 7) {
-    analysis =
-      "You recognized structural injustice. This was not one evil person, but a power system using fear to punish women who did not fit social rules.";
-  } else if (state.awareness >= 3) {
-    analysis =
-      "You saw some unfairness, but pressure for order shaped your actions. This reflects how ordinary people can take part in harmful systems.";
-  } else {
-    analysis =
-      "You accepted fear as proof and obedience as justice. That is how injustice can feel normal and stay in place.";
-  }
-
-  const todayLink =
-    "\n\nModern echo: when anxiety is projected onto one group, legal process can still look valid while producing unfair outcomes.";
-  reflection.textContent = `${roleLine}${scoreLine}${analysis}${todayLink}`;
-}
-
-function updateHud() {
-  if (fearValue) fearValue.textContent = state.fear;
-  if (biasValue) biasValue.textContent = state.bias;
-  if (powerValue) powerValue.textContent = state.power;
+  reflection.textContent =
+    `Modern echo:\n${trialCase.modernEcho}\n\n` +
+    "The Salem Witch Trials were not only about witchcraft. They were about fear, power, gender, and social control.\n\n" +
+    "Tituba's case shows how vulnerable people can be pressured by authority.\n" +
+    "Rebecca Nurse's case shows how public fear can overturn justice.\n" +
+    "Sarah Good's case shows how poverty and gender bias can make someone a target.\n\n" +
+    "Together, these cases reveal a dangerous pattern:\n" +
+    "When fear becomes stronger than evidence, injustice becomes easier to justify.\n\n" +
+    "Final reflection question:\n" +
+    "Who has power in a trial?\n" +
+    "The person who speaks?\n" +
+    "The person who judges?\n" +
+    "Or the crowd that decides what truth should sound like?";
 }
 
 function resetGame() {
   endScreen.classList.add("hidden");
   gameScreen.classList.add("hidden");
-  startScreen.classList.remove("hidden");
+  startScreen.classList.add("hidden");
+  introScreen.classList.remove("hidden");
 
   Object.keys(timers).forEach((key) => {
     clearInterval(timers[key]);
