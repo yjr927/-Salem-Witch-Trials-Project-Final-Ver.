@@ -7,45 +7,45 @@ const ROLES = {
 const CHARACTERS = {
   magistrate: {
     name: "Magistrate",
-    portrait: "./assets/characters/magistrate-portrait.jpg",
-    close: "./assets/characters/magistrate-portrait.jpg",
-    focusFit: "cover",
-    focusPos: "center 42%",
+    portrait: "./assets/characters/transparent/magistrate-transparent.png",
+    close: "./assets/characters/transparent/magistrate-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
   },
   accused: {
     name: "The Accused",
-    portrait: "./assets/characters/accused-sheet.jpg",
-    close: "./assets/characters/accused-close.jpg",
-    focusFit: "cover",
-    focusPos: "center 42%",
+    portrait: "./assets/characters/transparent/accused-transparent.png",
+    close: "./assets/characters/transparent/accused-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
   },
   juryA: {
     name: "Juror A",
-    portrait: "./assets/characters/jury-a-portrait.jpg",
-    close: "./assets/characters/jury-a-portrait.jpg",
-    focusFit: "cover",
-    focusPos: "center 42%",
+    portrait: "./assets/characters/transparent/jury-a-transparent.png",
+    close: "./assets/characters/transparent/jury-a-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
   },
   juryB: {
     name: "Juror B",
-    portrait: "./assets/characters/jury-b-portrait.jpg",
-    close: "./assets/characters/jury-b-portrait.jpg",
-    focusFit: "cover",
-    focusPos: "center 42%",
+    portrait: "./assets/characters/transparent/jury-b-transparent.png",
+    close: "./assets/characters/transparent/jury-b-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
   },
   juryC: {
     name: "Juror C",
-    portrait: "./assets/characters/jury-c-portrait.jpg",
-    close: "./assets/characters/jury-c-portrait.jpg",
-    focusFit: "cover",
-    focusPos: "center 42%",
+    portrait: "./assets/characters/transparent/jury-c-transparent.png",
+    close: "./assets/characters/transparent/jury-c-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
   },
   juryD: {
     name: "Juror D",
-    portrait: "./assets/characters/jury-d-portrait.jpg",
-    close: "./assets/characters/jury-d-portrait.jpg",
-    focusFit: "cover",
-    focusPos: "center 42%",
+    portrait: "./assets/characters/transparent/jury-d-transparent.png",
+    close: "./assets/characters/transparent/jury-d-transparent.png",
+    focusFit: "contain",
+    focusPos: "center bottom",
   },
 };
 
@@ -570,8 +570,8 @@ function renderCharacterRow(activeSpeaker) {
     const img = document.createElement("img");
     img.src = id === activeSpeaker ? character.close : character.portrait;
     img.alt = `${character.name} portrait`;
-    img.style.objectFit = "cover";
-    img.style.objectPosition = "center 40%";
+    img.style.objectFit = character.focusFit || "cover";
+    img.style.objectPosition = character.focusPos || "center 40%";
 
     const label = document.createElement("span");
     label.textContent = character.name;
