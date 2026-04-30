@@ -317,6 +317,7 @@ const BGM_FADE_MS = 1800;
 const BGM_RESTART_MARGIN = 2.1;
 let bgmStarted = false;
 let bgmRestarting = false;
+let bgmUnlockBound = false;
 
 chooseRoleBtn.addEventListener("click", () => {
   startBgm();
@@ -345,10 +346,19 @@ sceneContinueBtn.addEventListener("click", () => {
 });
 
 if (bgmAudio) {
+  bgmAudio.autoplay = true;
   bgmAudio.loop = false;
+  bgmAudio.playsInline = true;
   bgmAudio.volume = 0;
   bgmAudio.addEventListener("timeupdate", handleBgmTimeUpdate);
   bgmAudio.addEventListener("ended", restartBgmWithFade);
+  requestAnimationFrame(startBgm);
+  window.addEventListener("load", startBgm, { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      startBgm();
+    }
+  });
 }
 
 function currentCase() {
@@ -550,7 +560,27 @@ function startBgm() {
     .then(() => fadeBgmTo(BGM_TARGET_VOLUME, BGM_FADE_MS))
     .catch(() => {
       bgmStarted = false;
+      bindBgmUnlock();
     });
+}
+
+function bindBgmUnlock() {
+  if (bgmUnlockBound) {
+    return;
+  }
+
+  bgmUnlockBound = true;
+  const unlock = () => {
+    bgmUnlockBound = false;
+    document.removeEventListener("pointerdown", unlock);
+    document.removeEventListener("keydown", unlock);
+    document.removeEventListener("touchstart", unlock);
+    startBgm();
+  };
+
+  document.addEventListener("pointerdown", unlock, { once: true });
+  document.addEventListener("keydown", unlock, { once: true });
+  document.addEventListener("touchstart", unlock, { once: true });
 }
 
 function handleBgmTimeUpdate() {
