@@ -309,6 +309,7 @@ const speakerName = document.getElementById("speaker-name");
 const dialogueLine = document.getElementById("dialogue-line");
 const nextLineBtn = document.getElementById("next-line-btn");
 const bgmAudio = document.getElementById("bgm-audio");
+const dialogueBox = document.querySelector(".dialogue-box");
 
 const timers = {};
 const BGM_TARGET_VOLUME = 0.42;
@@ -324,6 +325,12 @@ chooseRoleBtn.addEventListener("click", () => {
 });
 
 roleButtons.forEach((btn) => {
+  btn.addEventListener("pointermove", (event) => {
+    const rect = btn.getBoundingClientRect();
+    btn.style.setProperty("--x", `${event.clientX - rect.left}px`);
+    btn.style.setProperty("--y", `${event.clientY - rect.top}px`);
+  });
+
   btn.addEventListener("click", () => {
     startBgm();
     startGame(btn.dataset.role);
@@ -380,6 +387,7 @@ function renderCurrentCase() {
 
   scenePanel.classList.remove("hidden");
   dialogueStage.classList.add("hidden");
+  replayClass(scenePanel, "scene-enter");
 }
 
 function renderDialogueLine(line) {
@@ -394,6 +402,10 @@ function renderDialogueLine(line) {
   speakerFocusImage.classList.remove("zoom-pop");
   void speakerFocusImage.offsetWidth;
   speakerFocusImage.classList.add("zoom-pop");
+  replayClass(dialogueStage, "dialogue-pulse");
+  replayClass(dialogueBox, "dialogue-lift");
+  replayClass(speakerName, "name-pop");
+  replayClass(dialogueLine, "line-reveal");
 
   renderCharacterRow(line.speaker);
   typeText(dialogueLine, line.text, 12, "dialogue");
@@ -471,14 +483,26 @@ function renderRecordAndChoices(trialCase) {
     const btn = document.createElement("button");
     btn.className = "choice-btn";
     btn.textContent = `${String.fromCharCode(65 + idx)}. ${choice.text}`;
-    btn.addEventListener("click", () => applyChoice(choice));
+    btn.style.animationDelay = `${idx * 80}ms`;
+    btn.addEventListener("click", () => applyChoice(choice, btn));
     choicesEl.appendChild(btn);
   });
 }
 
-function applyChoice(choice) {
+function applyChoice(choice, selectedButton) {
   state.chosen = choice;
-  finishGame(choice);
+  if (!selectedButton) {
+    finishGame(choice);
+    return;
+  }
+
+  choicesEl.querySelectorAll(".choice-btn").forEach((btn) => {
+    btn.disabled = true;
+    btn.classList.toggle("is-selected", btn === selectedButton);
+    btn.classList.toggle("is-muted", btn !== selectedButton);
+  });
+
+  setTimeout(() => finishGame(choice), 320);
 }
 
 function finishGame(choice) {
@@ -583,6 +607,16 @@ function fadeBgmTo(targetVolume, duration) {
       }
     }, 40);
   });
+}
+
+function replayClass(el, className) {
+  if (!el) {
+    return;
+  }
+
+  el.classList.remove(className);
+  void el.offsetWidth;
+  el.classList.add(className);
 }
 
 function typeText(el, text, speed = 18, key = "default") {
