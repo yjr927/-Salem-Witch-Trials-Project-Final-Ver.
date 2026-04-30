@@ -4,19 +4,82 @@ const ROLES = {
   jury: "Juror",
 };
 
-const SCENE_IMAGES = ["./scene-1.jpeg", "./scene-2.jpeg", "./scene-3.jpeg", "./scene-4.jpeg"];
+const CHARACTERS = {
+  magistrate: {
+    name: "Magistrate",
+    portrait: "./assets/characters/magistrate-portrait.jpg",
+    close: "./assets/characters/magistrate-portrait.jpg",
+    focusFit: "cover",
+    focusPos: "center 42%",
+  },
+  accused: {
+    name: "The Accused",
+    portrait: "./assets/characters/accused-sheet.jpg",
+    close: "./assets/characters/accused-close.jpg",
+    focusFit: "cover",
+    focusPos: "center 42%",
+  },
+  juryA: {
+    name: "Juror A",
+    portrait: "./assets/characters/jury-a-portrait.jpg",
+    close: "./assets/characters/jury-a-portrait.jpg",
+    focusFit: "cover",
+    focusPos: "center 42%",
+  },
+  juryB: {
+    name: "Juror B",
+    portrait: "./assets/characters/jury-b-portrait.jpg",
+    close: "./assets/characters/jury-b-portrait.jpg",
+    focusFit: "cover",
+    focusPos: "center 42%",
+  },
+  juryC: {
+    name: "Juror C",
+    portrait: "./assets/characters/jury-c-portrait.jpg",
+    close: "./assets/characters/jury-c-portrait.jpg",
+    focusFit: "cover",
+    focusPos: "center 42%",
+  },
+  juryD: {
+    name: "Juror D",
+    portrait: "./assets/characters/jury-d-portrait.jpg",
+    close: "./assets/characters/jury-d-portrait.jpg",
+    focusFit: "cover",
+    focusPos: "center 42%",
+  },
+};
 
-const SCENE_CAPTIONS = [
-  "Public fear enters the courtroom before any evidence does.",
-  "The accused woman stands at the center of every stare.",
-  "Power gathers at the table while rumors grow louder.",
-  "The final verdict sounds formal, but the process is not fair.",
-];
+const CHARACTER_ORDER = ["magistrate", "accused", "juryA", "juryB", "juryC", "juryD"];
 
 const ACTS = [
   {
     id: "I",
     title: "Act I · Accusation",
+    scene: {
+      judge: "./assets/scenes/scene-1-accusation.jpg",
+      accused: "./assets/scenes/scene-1-accusation.jpg",
+      jury: "./assets/scenes/scene-1-accusation.jpg",
+    },
+    caption:
+      "Scene 1 — Accusation: public panic enters the courtroom before any real evidence is tested.",
+    dialogue: [
+      {
+        speaker: "magistrate",
+        text: "Bring the accused forward. This court will hear the charge.",
+      },
+      {
+        speaker: "accused",
+        text: "I stand here innocent. Fear has named me before truth could speak.",
+      },
+      {
+        speaker: "juryA",
+        text: "The whole town is watching. If we hesitate, they will call us weak.",
+      },
+      {
+        speaker: "juryD",
+        text: "I hear more panic than proof. Yet no one in this room feels free to say it.",
+      },
+    ],
     narratives: {
       judge:
         "Salem, 1692. People outside the court demand punishment now. You sit with the court record, knowing the town wants certainty more than truth.",
@@ -90,6 +153,31 @@ const ACTS = [
   {
     id: "II",
     title: "Act II · Examination",
+    scene: {
+      judge: "./assets/scenes/scene-2-exam-angle-a.jpg",
+      accused: "./assets/scenes/scene-2-exam-angle-b.jpg",
+      jury: "./assets/scenes/scene-2-exam-angle-b.jpg",
+    },
+    caption:
+      "Scene 2 — Examination: a staged interrogation where scrutiny grows louder than reason.",
+    dialogue: [
+      {
+        speaker: "magistrate",
+        text: "Read the prayer. If your voice trembles, this court will notice.",
+      },
+      {
+        speaker: "accused",
+        text: "My pause is fear, not evil. You record my breathing as if it were a crime.",
+      },
+      {
+        speaker: "juryB",
+        text: "The witness stories conflict, but the room wants one clean answer.",
+      },
+      {
+        speaker: "juryC",
+        text: "This no longer feels like a search for truth. It feels like a trap already closed.",
+      },
+    ],
     narratives: {
       judge:
         "The hearing becomes a performance. Each pause from the accused is called suspicious. You see contradictions, but pressure for order keeps rising.",
@@ -163,6 +251,31 @@ const ACTS = [
   {
     id: "III",
     title: "Act III · Deliberation",
+    scene: {
+      judge: "./assets/scenes/scene-3-deliberation.jpg",
+      accused: "./assets/scenes/scene-3-deliberation.jpg",
+      jury: "./assets/scenes/scene-3-deliberation.jpg",
+    },
+    caption:
+      "Scene 3 — Deliberation: authority gathers at the table while the accused is left alone in shadow.",
+    dialogue: [
+      {
+        speaker: "juryA",
+        text: "Town leaders sent word. They demand a fast verdict before sunrise.",
+      },
+      {
+        speaker: "magistrate",
+        text: "Then we move quickly. The town asks for order, and order asks for sacrifice.",
+      },
+      {
+        speaker: "accused",
+        text: "In the cell, I write the truth. I do not know if this court will let it survive.",
+      },
+      {
+        speaker: "juryD",
+        text: "If fear is enough to convict, then none of us are safe from the next accusation.",
+      },
+    ],
     narratives: {
       judge:
         "Night falls. A message from town leaders says the verdict must come soon. They want closure, not complexity.",
@@ -236,6 +349,31 @@ const ACTS = [
   {
     id: "IV",
     title: "Act IV · Sentence",
+    scene: {
+      judge: "./assets/scenes/scene-4-sentence.jpg",
+      accused: "./assets/scenes/scene-4-sentence.jpg",
+      jury: "./assets/scenes/scene-4-sentence.jpg",
+    },
+    caption:
+      "Scene 4 — Sentence: formal order is performed, while structural injustice is sealed into record.",
+    dialogue: [
+      {
+        speaker: "magistrate",
+        text: "By authority of this court, the accused is judged guilty.",
+      },
+      {
+        speaker: "accused",
+        text: "You call me witch, and erase every honest part of my life with one word.",
+      },
+      {
+        speaker: "juryB",
+        text: "The room sounds relieved. But relief is not the same as justice.",
+      },
+      {
+        speaker: "juryC",
+        text: "This verdict will be written as order. We know it was fear.",
+      },
+    ],
     narratives: {
       judge:
         "The bell rings. You read the sentence and the crowd exhales with relief. Still, you know the court never resolved its core contradictions.",
@@ -316,11 +454,16 @@ const state = {
   power: 0,
   awareness: 0,
   chosen: [],
+  dialogueIndex: 0,
+  dialogueDone: false,
 };
 
 const startScreen = document.getElementById("start-screen");
 const gameScreen = document.getElementById("game-screen");
 const endScreen = document.getElementById("end-screen");
+const scenePanel = document.querySelector(".scene-panel");
+const dialogueStage = document.getElementById("dialogue-stage");
+const sceneContinueBtn = document.getElementById("scene-continue-btn");
 const narrativeEl = document.getElementById("narrative");
 const evidenceList = document.getElementById("evidence-list");
 const choicesEl = document.getElementById("choices");
@@ -335,7 +478,14 @@ const finalVerdict = document.getElementById("final-verdict");
 const reflection = document.getElementById("reflection");
 const restartBtn = document.getElementById("restart-btn");
 const roleButtons = document.querySelectorAll(".role-btn");
-let typeTimer = null;
+const actContent = document.getElementById("act-content");
+const speakerFocusImage = document.getElementById("speaker-focus-image");
+const characterRow = document.getElementById("character-row");
+const speakerName = document.getElementById("speaker-name");
+const dialogueLine = document.getElementById("dialogue-line");
+const nextLineBtn = document.getElementById("next-line-btn");
+
+const timers = {};
 
 roleButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -344,6 +494,8 @@ roleButtons.forEach((btn) => {
 });
 
 restartBtn.addEventListener("click", resetGame);
+nextLineBtn.addEventListener("click", goToNextDialogueLine);
+sceneContinueBtn.addEventListener("click", startDialoguePhase);
 
 function startGame(role) {
   state.role = role;
@@ -353,6 +505,8 @@ function startGame(role) {
   state.power = role === "judge" ? 2 : role === "jury" ? 1 : 0;
   state.awareness = 0;
   state.chosen = [];
+  state.dialogueIndex = 0;
+  state.dialogueDone = false;
   startScreen.classList.add("hidden");
   endScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
@@ -364,10 +518,96 @@ function renderCurrentAct() {
   updateHud();
   roleTag.textContent = `Role: ${ROLES[state.role]}`;
   chapterTag.textContent = act.title;
-  sceneImage.src = SCENE_IMAGES[state.step];
-  sceneCaption.textContent = SCENE_CAPTIONS[state.step];
-  typeWriter(narrativeEl, act.narratives[state.role], 14);
+  sceneImage.src = act.scene[state.role];
+  sceneCaption.textContent = act.caption;
 
+  actContent.classList.add("hidden");
+  choicesEl.innerHTML = "";
+  evidenceList.innerHTML = "";
+  narrativeEl.textContent = "";
+
+  state.dialogueIndex = 0;
+  state.dialogueDone = false;
+  nextLineBtn.disabled = false;
+  nextLineBtn.textContent = "Next testimony";
+  sceneContinueBtn.disabled = false;
+  sceneContinueBtn.textContent = "Enter court dialogue";
+
+  // Phase 1: show scene first, then let dialogue replace it.
+  scenePanel.classList.remove("hidden");
+  dialogueStage.classList.add("hidden");
+}
+
+function renderDialogueLine(line) {
+  const character = CHARACTERS[line.speaker];
+  speakerName.textContent = character.name;
+  speakerFocusImage.src = character.close;
+  speakerFocusImage.style.objectFit = character.focusFit || "cover";
+  speakerFocusImage.style.objectPosition = character.focusPos || "center";
+  speakerFocusImage.classList.remove("zoom-pop");
+  void speakerFocusImage.offsetWidth;
+  speakerFocusImage.classList.add("zoom-pop");
+
+  renderCharacterRow(line.speaker);
+  typeText(dialogueLine, line.text, 14, "dialogue");
+}
+
+function startDialoguePhase() {
+  const act = ACTS[state.step];
+  scenePanel.classList.add("hidden");
+  dialogueStage.classList.remove("hidden");
+  renderDialogueLine(act.dialogue[state.dialogueIndex]);
+}
+
+function renderCharacterRow(activeSpeaker) {
+  characterRow.innerHTML = "";
+
+  CHARACTER_ORDER.forEach((id) => {
+    const character = CHARACTERS[id];
+    const card = document.createElement("div");
+    card.className = `character-pill${id === activeSpeaker ? " is-speaking" : ""}`;
+
+    const img = document.createElement("img");
+    img.src = id === activeSpeaker ? character.close : character.portrait;
+    img.alt = `${character.name} portrait`;
+    img.style.objectFit = "cover";
+    img.style.objectPosition = "center 40%";
+
+    const label = document.createElement("span");
+    label.textContent = character.name;
+
+    card.appendChild(img);
+    card.appendChild(label);
+    characterRow.appendChild(card);
+  });
+}
+
+function goToNextDialogueLine() {
+  const act = ACTS[state.step];
+  if (state.dialogueDone) {
+    return;
+  }
+
+  if (state.dialogueIndex < act.dialogue.length - 1) {
+    state.dialogueIndex += 1;
+    renderDialogueLine(act.dialogue[state.dialogueIndex]);
+    return;
+  }
+
+  finishDialoguePhase(act);
+}
+
+function finishDialoguePhase(act) {
+  state.dialogueDone = true;
+  nextLineBtn.disabled = true;
+  nextLineBtn.textContent = "Dialogue complete";
+  actContent.classList.remove("hidden");
+
+  typeText(narrativeEl, act.narratives[state.role], 14, "narrative");
+  renderEvidenceAndChoices(act);
+}
+
+function renderEvidenceAndChoices(act) {
   evidenceList.innerHTML = "";
   act.evidence[state.role].forEach((line) => {
     const li = document.createElement("li");
@@ -428,34 +668,37 @@ function finishGame() {
 }
 
 function updateHud() {
-  fearValue.textContent = state.fear;
-  biasValue.textContent = state.bias;
-  powerValue.textContent = state.power;
+  if (fearValue) fearValue.textContent = state.fear;
+  if (biasValue) biasValue.textContent = state.bias;
+  if (powerValue) powerValue.textContent = state.power;
 }
 
 function resetGame() {
   endScreen.classList.add("hidden");
   gameScreen.classList.add("hidden");
   startScreen.classList.remove("hidden");
-  if (typeTimer) {
-    clearInterval(typeTimer);
-    typeTimer = null;
-  }
+
+  Object.keys(timers).forEach((key) => {
+    clearInterval(timers[key]);
+    delete timers[key];
+  });
 }
 
-function typeWriter(el, text, speed = 18) {
-  if (typeTimer) {
-    clearInterval(typeTimer);
-    typeTimer = null;
+function typeText(el, text, speed = 18, key = "default") {
+  if (timers[key]) {
+    clearInterval(timers[key]);
+    delete timers[key];
   }
+
   el.textContent = "";
   let index = 0;
-  typeTimer = setInterval(() => {
+
+  timers[key] = setInterval(() => {
     el.textContent += text[index];
     index += 1;
     if (index >= text.length) {
-      clearInterval(typeTimer);
-      typeTimer = null;
+      clearInterval(timers[key]);
+      delete timers[key];
     }
   }, speed);
 }
