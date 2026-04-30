@@ -478,12 +478,7 @@ function finishGame(choice) {
     "Rebecca Nurse's case shows how public fear can overturn justice.\n" +
     "Sarah Good's case shows how poverty and gender bias can make someone a target.\n\n" +
     "Together, these cases reveal a dangerous pattern:\n" +
-    "When fear becomes stronger than evidence, injustice becomes easier to justify.\n\n" +
-    "Final reflection question:\n" +
-    "Who has power in a trial?\n" +
-    "The person who speaks?\n" +
-    "The person who judges?\n" +
-    "Or the crowd that decides what truth should sound like?";
+    "When fear becomes stronger than evidence, injustice becomes easier to justify.";
 }
 
 function resetGame() {
