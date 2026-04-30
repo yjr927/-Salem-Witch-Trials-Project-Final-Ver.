@@ -9,6 +9,9 @@
   --line: #aea3a3;
   --gold-faint: #e2dcdc;
   --dialogue-paper: #dddddd;
+  --glass: rgba(221, 221, 221, 0.16);
+  --glass-deep: rgba(109, 79, 79, 0.42);
+  --glass-border: rgba(221, 221, 221, 0.34);
 }
 
 * {
@@ -18,7 +21,10 @@
 body {
   margin: 0;
   font-family: "Merriweather", serif;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(221, 221, 221, 0.26), transparent 34%),
+    radial-gradient(circle at 82% 76%, rgba(109, 79, 79, 0.4), transparent 38%),
+    var(--bg);
   color: var(--ink);
   min-height: 100vh;
 }
@@ -86,11 +92,13 @@ h1 {
 }
 
 .panel {
-  background: linear-gradient(145deg, rgba(109, 98, 98, 0.96), rgba(92, 80, 80, 0.96));
-  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(221, 221, 221, 0.18), rgba(109, 79, 79, 0.34));
+  border: 1px solid var(--glass-border);
   border-radius: 14px;
   padding: 1.25rem;
-  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 26px 46px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
   animation: fadeIn 0.45s ease both;
 }
 
@@ -161,12 +169,15 @@ h1 {
 
 .role-btn {
   text-align: center;
-  border: 1px solid #aea3a3;
-  background: linear-gradient(180deg, #766969, #635858);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(221, 221, 221, 0.17), rgba(109, 79, 79, 0.3));
   color: var(--ink);
   border-radius: 10px;
   padding: 0.9rem;
   cursor: pointer;
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -264,11 +275,14 @@ h1 {
 }
 
 .scene-panel {
-  background: rgba(109, 79, 79, 0.2);
-  border: 1px solid #aea3a3;
+  background: rgba(221, 221, 221, 0.12);
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
   padding: 0.75rem;
   align-self: stretch;
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
 #scene-image {
@@ -288,16 +302,18 @@ h1 {
   color: #cfbfab;
   font-size: 0.94rem;
   line-height: 1.65;
-  background: rgba(109, 98, 98, 0.82);
-  border: 1px solid #aea3a3;
+  background: rgba(221, 221, 221, 0.14);
+  border: 1px solid var(--glass-border);
   border-radius: 9px;
   padding: 0.8rem 0.9rem;
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
 }
 
 .scene-continue-btn {
   margin-top: 0.75rem;
-  border: 1px solid #aea3a3;
-  background: linear-gradient(180deg, #6d4f4f, #5d4747);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(109, 79, 79, 0.72), rgba(109, 79, 79, 0.48));
   color: var(--ink);
   border-radius: 8px;
   padding: 0.55rem 0.88rem;
@@ -305,6 +321,8 @@ h1 {
   font-family: "Cinzel", serif;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
 }
 
 .scene-continue-btn:hover {
@@ -315,8 +333,8 @@ h1 {
   position: relative;
   overflow: hidden;
   min-height: clamp(560px, 74vh, 760px);
-  border: 1px solid #aea3a3;
-  background: #817474;
+  border: 1px solid var(--glass-border);
+  background: rgba(129, 116, 116, 0.48);
   border-radius: 12px;
   padding: 0;
   margin-top: 0.15rem;
@@ -464,12 +482,14 @@ h1 {
   bottom: clamp(1rem, 2.8vh, 1.5rem);
   z-index: 5;
   min-height: 142px;
-  border: 1px solid rgba(174, 163, 163, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 8px 8px 28px 28px;
   padding: 2rem clamp(1.05rem, 3vw, 2rem) 1rem;
-  background: var(--dialogue-paper);
+  background: rgba(221, 221, 221, 0.68);
   color: #1c1218;
-  box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.52) inset, 0 18px 42px rgba(0, 0, 0, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58), 0 -2px 0 rgba(255, 255, 255, 0.28) inset, 0 18px 42px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .speaker-name {
@@ -479,9 +499,9 @@ h1 {
   min-width: 190px;
   margin: 0;
   padding: 0.34rem 1.25rem 0.38rem;
-  border: 1px solid rgba(174, 163, 163, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.52);
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(221, 221, 221, 0.98), rgba(174, 163, 163, 0.95));
+  background: rgba(221, 221, 221, 0.66);
   color: #4b3838;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -490,6 +510,8 @@ h1 {
   font-family: "Cinzel", serif;
   transform: translateX(-50%);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px) saturate(145%);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
 }
 
 .dialogue-line {
@@ -537,10 +559,12 @@ h1 {
 
 .evidence-box {
   margin: 1rem 0;
-  border: 1px solid #aea3a3;
-  background: rgba(109, 79, 79, 0.28);
+  border: 1px solid var(--glass-border);
+  background: rgba(221, 221, 221, 0.12);
   border-radius: 10px;
   padding: 0.7rem 0.9rem;
+  backdrop-filter: blur(16px) saturate(125%);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
 }
 
 .evidence-box h3 {
@@ -573,19 +597,21 @@ h1 {
 }
 
 .choice-btn {
-  border: 1px solid #aea3a3;
-  background: linear-gradient(180deg, #766969, #635858);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(180deg, rgba(221, 221, 221, 0.14), rgba(109, 79, 79, 0.3));
   color: var(--ink);
   text-align: left;
   border-radius: 10px;
   padding: 0.75rem;
   cursor: pointer;
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
 }
 
 .choice-btn:hover {
   border-color: #dddddd;
-  background: linear-gradient(180deg, #817474, #6d4f4f);
+  background: linear-gradient(180deg, rgba(221, 221, 221, 0.2), rgba(109, 79, 79, 0.48));
   transform: translateY(-1px);
 }
 
@@ -602,9 +628,13 @@ h1 {
 .verdict {
   padding: 0.85rem;
   border-left: 4px solid var(--danger);
-  background: #6d4f4f;
+  background: rgba(109, 79, 79, 0.62);
   line-height: 1.7;
   white-space: pre-wrap;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
 }
 
 .reflection {
@@ -616,13 +646,15 @@ h1 {
 
 .restart-btn {
   border: 1px solid var(--accent);
-  background: transparent;
+  background: rgba(221, 221, 221, 0.12);
   color: var(--ink);
   padding: 0.7rem 1.1rem;
   border-radius: 7px;
   cursor: pointer;
   font-family: "Cinzel", serif;
   letter-spacing: 0.06em;
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
 }
 
 .restart-btn:hover {
