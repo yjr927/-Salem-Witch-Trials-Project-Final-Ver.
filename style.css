@@ -73,8 +73,8 @@ h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   font-family: "UnifrakturCook", serif;
   letter-spacing: 0.03em;
-  color: #f7ead0;
-  text-shadow: 0 0 22px rgba(64, 39, 27, 0.52);
+  color: #111111;
+  text-shadow: 0 1px 0 rgba(245, 232, 202, 0.45), 0 0 18px rgba(245, 232, 202, 0.2);
 }
 
 .title-en {
