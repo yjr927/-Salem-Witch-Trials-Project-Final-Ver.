@@ -479,6 +479,7 @@ const reflection = document.getElementById("reflection");
 const restartBtn = document.getElementById("restart-btn");
 const roleButtons = document.querySelectorAll(".role-btn");
 const actContent = document.getElementById("act-content");
+const dialogueBgImage = document.getElementById("dialogue-bg-image");
 const speakerFocusImage = document.getElementById("speaker-focus-image");
 const characterRow = document.getElementById("character-row");
 const speakerName = document.getElementById("speaker-name");
@@ -539,9 +540,12 @@ function renderCurrentAct() {
 }
 
 function renderDialogueLine(line) {
+  const act = ACTS[state.step];
   const character = CHARACTERS[line.speaker];
+  dialogueBgImage.src = act.scene[state.role];
   speakerName.textContent = character.name;
   speakerFocusImage.src = character.close;
+  speakerFocusImage.dataset.speaker = line.speaker;
   speakerFocusImage.style.objectFit = character.focusFit || "cover";
   speakerFocusImage.style.objectPosition = character.focusPos || "center";
   speakerFocusImage.classList.remove("zoom-pop");
